@@ -1,6 +1,6 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { addUser } from './features/Users';
+import { addUser, deleteUser } from './features/Users';
 import { useState } from 'react';
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
         {
           userList.map(user => {
             return (
-              <div key={user.id} className="card bg-teal-400 text-primary-content shadow-xl">
+              <div className="card bg-teal-400 text-primary-content shadow-xl">
                 <div className="card-body">
                   <h2 className="card-title">{user.username}</h2>
                   <p className='text-2xl'>{user.name}</p>
@@ -52,7 +52,7 @@ function App() {
                       }}
                     />
                     <button className='btn bg-red-400 border-none text-white btn-sm'>Update Username</button>
-                    <button className='btn bg-red-300 border-none btn-sm'>Delete User</button>
+                    <button onClick={() => { dispatch(deleteUser({ id: user.id })) }} className='btn bg-red-500 border-none btn-sm'>Delete User</button>
                   </div>
                 </div>
               </div>
