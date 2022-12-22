@@ -22,6 +22,7 @@ function App() {
       <div className="addUser mt-5">
         <input className='placeholder:italic placeholder:text-slate-400 shadow appearance-none border rounded py-3 pl-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2'
           type="text"
+          name='name'
           placeholder='Name...'
           onChange={(event) => {
             setName(event.target.value)
@@ -33,7 +34,7 @@ function App() {
         <input className='placeholder:italic placeholder:text-slate-400 shadow appearance-none border rounded py-3 pl-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2'
           type="text"
           placeholder='Username...'
-          name='sdf'
+          name='username'
           onChange={(event) => {
             setUsername(event.target.value)
           }}
@@ -41,6 +42,8 @@ function App() {
 
 
         <button onClick={() => { name && username && dispatch(addUser({ id: userList[userList.length - 1].id + 1, name: name, username: username })); }} className='btn bg-red-400 border-none text-white'>Add User</button>
+
+
       </div>
 
 
@@ -53,8 +56,8 @@ function App() {
             return (
               <div className="card bg-teal-400 text-primary-content shadow-xl">
                 <div className="card-body">
-                  <h2 className="card-title">{user.name}</h2>
-                  <p className='text-3xl'>{user.username}</p>
+                  <h2 className="card-title">{user?.name}</h2>
+                  <p className='text-3xl'>{user?.username}</p>
                   <div className="card-actions mt-2">
 
                     <input
