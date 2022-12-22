@@ -1,6 +1,6 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { addUser, deleteUser } from './features/Users';
+import { addUser, deleteUser, updateUsername } from './features/Users';
 import { useState } from 'react';
 
 function App() {
@@ -49,12 +49,12 @@ function App() {
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-6 mt-12">
         {
-          userList.map(user => {
+          userList?.map(user => {
             return (
               <div className="card bg-teal-400 text-primary-content shadow-xl">
                 <div className="card-body">
-                  <h2 className="card-title">{user.username}</h2>
-                  <p className='text-2xl'>{user.name}</p>
+                  <h2 className="card-title">{user.name}</h2>
+                  <p className='text-3xl'>{user.username}</p>
                   <div className="card-actions mt-2">
 
                     <input
@@ -66,7 +66,7 @@ function App() {
                       }}
                     />
 
-                    <button className='btn bg-red-400 border-none text-white btn-sm'>Update Username</button>
+                    <button onClick={() => { dispatch(updateUsername({ id: user.id, username: newUsername })) }} className='btn bg-red-400 border-none text-white btn-sm'>Update Username</button>
 
 
 
